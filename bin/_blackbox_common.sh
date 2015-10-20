@@ -35,7 +35,7 @@ function physical_directory_of() {
 # Set VCS_TYPE to 'git', 'hg', 'svn' or 'unknown'
 if which >/dev/null 2>/dev/null git && git rev-parse --show-toplevel >/dev/null 2>&1 ; then
   VCS_TYPE=git
-  REPOBASE=$(git rev-parse --show-toplevel)
+  REPOBASE=""
 elif [ -d ".svn" ] ; then
   # Find topmost dir with .svn sub-dir
   parent=""
@@ -167,7 +167,7 @@ function prepare_keychain() {
 function add_filename_to_cryptlist() {
   # If the name is already on the list, this is a no-op.
   # However no matter what the datestamp is updated.
-  
+
   # https://github.com/koalaman/shellcheck/wiki/SC2155
   local name
   name=$(vcs_relative_path "$1")
@@ -297,7 +297,7 @@ function enumerate_subdirs() {
     done
   done <"$listfile" | sort -u
 }
- 
+
 
 # chdir to the base of the repo.
 function change_to_vcs_root() {
